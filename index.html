@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Virtualdesk software</title>
+    <style>
+      /* Reset básico */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Estructura general */
+      body {
+        background-color: #f8f9fa;
+        color: #333;
+      }
+
+      /* cabecera con logo centrado */
+      header {
+        background-color: #ffcc99;
+        text-align: center;
+        padding: 15px;
+      }
+
+      header img {
+        width: 100px;
+        height: auto;
+        border-radius: 50%;
+      }
+
+      /* Barra de menú */
+      nav {
+        background-color: #993d00;
+        text-align: center;
+        padding: 10px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+      }
+
+
+
+      nav a:hover {
+        color: #ffdd99;
+      }
+
+      /* Menú hamburguesa en móviles */
+      input[type="checkbox"] {
+        display: none;
+      }
+
+      label.menu-icon {
+        display: none;
+        cursor: pointer;
+        font-size: 30px;
+        padding: 10px;
+      }
+
+      /* Sección principal */
+      main {
+        text-align: center;
+        padding: 40px 20px 20px; /* Reducimos el padding inferior */
+        margin-bottom: 10px; /* Reducimos la separación con la siguiente sección */
+      }
+
+      main h1 {
+        font-size: 2.5em;
+        margin-bottom: 15px;
+      }
+
+      main p {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+      }
+
+      main input {
+        padding: 12px;
+        width: 280px;
+        font-size: 1.2em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      main button {
+        padding: 12px 25px;
+        background-color: #ff6600;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+
+      main button:hover {
+        background-color: #cc5500;
+      }
+
+      /* Productos */
+      section {
+        text-align: center;
+        padding: 30px 20px; /* Reducimos el padding superior e inferior */
+        margin-top: -10px; /* Acerca más la sección al main */
+      }
+
+      section div {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      article {
+        width: 250px;
+        height: 350px;
+        padding: 15px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      article img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      article h3 {
+        margin: 10px 0;
+      }
+
+      /* Footer en dos columnas */
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: auto;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      footer div {
+        width: 300px; /* ancho de cada columna */
+        text-align: center;
+      }
+
+      footer a {
+        color: #ff6600;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      /* Redes sociales alineadas horizontalmente */
+      .social {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Enlaces de redes sociales como botones redondos con iconos */
+      .social a.icon {
+        width: 40px;
+        height: 40px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-size: cover;
+        background-position: center;
+        text-indent: -9999px; /* Oculta el texto dentro del enlace */
+      }
+
+      /* Íconos específicos */
+      .social a.facebook {
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg");
+        background-color: #1877f2; /* Azul de Facebook */
+      }
+
+      .social a.instagram {
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png");
+        background-color: #e1306c; /* Rosa de Instagram */
+      }
+
+      .social a.threads {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1ywnz_Jdd140M9OK1Q4mSlwYjgRyzBtqw0A&s");
+        background-color: black; /* Negro de Threads */
+      }
+
+      /* Ajuste de tamaño y borde para mejor visibilidad */
+      .social a.icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-size: 60%;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 2px solid white; /* Bordes blancos */
+      }
+
+      /* resoluciones para dispositivos moviles */
+      @media (max-width: 768px) {
+        /* Menú hamburguesa */
+        nav {
+          display: none;
+          flex-direction: column;
+          text-align: center;
+          background: #993d00;
+          padding: 10px 0;
+        }
+
+        /* Adaptar input y botón en móviles */
+        main input,
+        main button {
+          width: calc(100% - 10px);
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+
+        label.menu-icon {
+          display: block;
+          text-align: right;
+          padding-right: 20px;
+          background-color: #d69950;
+          color: #fff;
+        }
+
+        input[type="checkbox"]:checked + nav {
+          display: flex;
+        }
+
+        /* Adaptar productos al ancho del móvil */
+        section div {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        article {
+          width: calc(100% - 10px);
+          height: auto;
+          padding: 20px;
+          margin: 5px;
+        }
+
+        article img {
+          height: 220px;
+        }
+
+        article h3 {
+          font-size: 1.8em;
+        }
+
+        article p {
+          font-size: 1.4em;
+        }
+
+        footer {
+          flex-direction: column;
+          align-items: center; /* Centrar contenido */
+          text-align: center;
+        }
+
+        footer div {
+          width: 90%; /* Ocupar casi todo el ancho de la pantalla */
+        }
+
+        /* Asegurar que los iconos de redes sociales se alineen horizontalmente */
+        .social {
+          justify-content: center;
+          flex-wrap: nowrap;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Cabecera con logo centrado -->
+    <header>
+      <img src="virt.jpg" alt="Logo" />
+    </header>
+
+    <!-- Barra de navegación -->
+    <label for="menu-toggle" class="menu-icon">☰</label>
+    <input type="checkbox" id="menu-toggle" />
+    <nav>
+      <a href="#">Inicio</a>
+      <a href="#">Productos</a>
+      <a href="#">Contacto</a>
+    </nav>
+
+    <main>
+      <section>
+        <h1>Bienvenido a Virtualdesk</h1>
+        <p>
+          Creamos software a medida, Soluciones integrales y mucho mas...
+          ¡Suscríbete para más información!
+        </p>
+        <input type="email" placeholder="Introduce tu correo" />
+        <button>Suscribirse</button>
+      </section>
+    </main>
+
+    <section>
+      <h2>Nuestros Productos</h2>
+
+      <div>
+        <article>
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh1FRTCRH-aOOzrTRMAf6IXdiwbNcOIo4ISA&s"
+            alt="Producto 1"
+          />
+          <h3>Desarrollo web</h3>
+          <p>Soluciones tecnológicas innovadoras.</p>
+        </article>
+
+        <article>
+          <img
+            src="https://colombia.unir.net/wp-content/uploads/sites/4/2021/08/male-computer-programmer-coding-computer-language-on-desktop-pc-in-picture-id963127020-1.jpg"
+            alt="Producto 2"
+          />
+          <h3>Desarrollo mobile</h3>
+          <p>Optimización de procesos con software avanzado.</p>
+        </article>
+
+        <article>
+          <img
+            src="https://cdn.ufidelitas.ac.cr/wp-content/uploads/2023/03/16113711/shutterstock_1371696536_Easy-Resize.com_.jpg"
+            alt="Producto 3"
+          />
+          <h3>Desarrollo de apps</h3>
+          <p>Análisis y gestión de datos eficiente.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <p>Contacto: contacto@virtualdesk.com</p>
+        <p>Tel: +123 456 789</p>
+        <p>&copy; 2025 Todos los derechos reservados</p>
+      </div>
+      <div>
+        <div class="social">
+          <span>Redes Sociales:</span>
+          <a
+            href="https://www.facebook.com"
+            class="icon facebook"
+            target="_blank"
+          ></a>
+          <a
+            href="https://www.instagram.com"
+            class="icon instagram"
+            target="_blank"
+          ></a>
+          <a
+            href="https://www.threads.net"
+            class="icon threads"
+            target="_blank"
+          ></a>
+        </div>
+
+        <div>
+          <p class="social">
+            <a href="#">Políticas</a> | <a href="#">Términos y Condiciones</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
