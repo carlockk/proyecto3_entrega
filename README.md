@@ -7,6 +7,8 @@ El maquetado fue en draw.io
 
 Se hizo el html y el css en un solo archivo index
 
+Se puede ver el html funcionando desde aqui: https://mellow-sprinkles-92b92b.netlify.app/
+
 Solo carga una imagen que es el logo (virt.jpg), el resto son direcciones de internet
 
 Es responsive y el menu toggle solo se hizo con css (tuve que investigar como hacerlo sin usar javascript)
