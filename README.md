@@ -11,6 +11,4 @@ Es responsive y el menu toggle solo se hizo con css
 
 No puse los iconos de usuario y de cart porque vi que no eran necesarios
 
-dejo enlace a la imagen en versión movil
-
-https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&title=Diagrama%20sin%20t%C3%ADtulo.drawio&dark=auto#Uhttps%3A%2F%2Fraw.githubusercontent.com%2Fcarlockk%2Fproyecto3_entrega%2Fmain%2FDiagrama%20sin%20t%C3%ADtulo.drawio
+va el prototipado en versión movil y para pc en jpg
